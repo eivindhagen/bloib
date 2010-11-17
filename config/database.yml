@@ -19,6 +19,6 @@ production:
   adapter: mysql
   database: rwb
   username: root
-  password: blank
+  password:
   pool: 5
   timeout: 5000

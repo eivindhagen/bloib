@@ -11,6 +11,7 @@ set :keep_releases, 10
 
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
+set :branch, "master"
 
 role :web, "bloib.com"                          # Your HTTP server, Apache/etc
 role :app, "bloib.com"                          # This may be the same as your `Web` server

@@ -7,7 +7,7 @@ set :user, "root"
 # servers (which is the default), you can specify the actual location
 # via the :deploy_to variable:
 set :deploy_to, "/#{user}/deploy/#{application}"
-set :keep_releases, 10
+set :keep_releases, 5
 
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`

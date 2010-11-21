@@ -1,5 +1,6 @@
 set :application, "RWB"
-set :repository,  "git@github.com:eivindhagen/rwb.git"
+#set :repository,  "git@github.com:eivindhagen/rwb.git"
+set :repository,  "/home/git/repositories/rwb.git"
 
 set :user, "root"
 

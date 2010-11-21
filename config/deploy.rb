@@ -19,10 +19,7 @@ role :app, "bloib.com"                          # This may be the same as your `
 role :db,  "bloib.com", :primary => true # This is where Rails migrations will run
 #role :db,  "your slave db-server here"
 
-# If you are using Passenger mod_rails uncomment this:
-# if you're still using the script/reapear helper you will need
-# these http://github.com/rails/irs_process_scripts
-
+# Server restart
 namespace :deploy do
   task :start do ; end
   task :stop do ; end

@@ -1,0 +1,8 @@
+AuthUserFile /home/git/.htpasswd
+AuthGroupFile /dev/null
+AuthName "My Private Directory"
+AuthType Basic
+
+<Limit GET POST>
+require valid-user
+</Limit>

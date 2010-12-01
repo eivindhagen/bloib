@@ -1,0 +1,79 @@
+#!/usr/bin/env ruby
+
+require 'find'
+
+badArgs = false
+
+unless [1,2].include? ARGV.size
+  badArgs = true
+end
+
+hostDir = ARGV[0]
+
+unless hostDir[hostDir.size-1] == '/'
+  puts "<host-dir> should have a trailing /"
+  puts "You called me with <host-dir> = '#{hostDir}'"
+  badArgs = true
+end
+
+option = "test" # default is to test to see which files are different, but not copy anything
+if ARGV.size == 2
+  option = ARGV[1]
+  unless ["test", "backup", "restore"].include? option
+    puts "Unknown option '#{option}'"
+    badArgs = true
+  end
+end
+
+if badArgs
+  puts "Usage: $0 <host-dir> [test|backup|restore]"
+  puts "You called me with these args:"
+  for i in 0...(ARGV.size) do
+    puts "ARGV[#{i}]: #{ARGV[i]}"
+  end
+  exit 1
+end
+
+puts "Scanning #{hostDir}"
+diffNum = 0
+missNum = 0
+Find.find(hostDir) do |path|
+  unless FileTest.directory?(path)
+    fileRelative = path[hostDir.size..path.size]
+    fileOnRealHost = '/' + fileRelative
+    fileInHostClone = hostDir + fileRelative
+    if FileTest.exists?(fileOnRealHost )
+      diffCmd = "diff #{fileOnRealHost} #{fileInHostClone}"
+      diffResult = `#{diffCmd}`
+      if diffResult.size > 0
+        diffNum += 1
+        puts "!CHANGED!: #{fileOnRealHost}"
+        case option
+        when "test"
+        when "backup"
+          cmd = "cp #{fileOnRealHost} #{fileInHostClone}"
+          result = `#{cmd}`
+          puts result if result.size > 0
+        when "restore"
+          puts "restore to real host"
+        end
+      else
+        #puts "identical: #{fileOnRealHost}"
+      end
+    else
+      missNum += 1
+      puts "!MISSING!: #{fileOnRealHost}"
+        case option
+        when "test"
+        when "backup"
+          cmd = "rm #{fileInHostClone}"
+          result = `#{cmd}`
+          puts result if result.size > 0
+        when "restore"
+          puts "restore to real host"
+        end
+    end
+  end
+end
+
+puts "Summary: changed=#{diffNum} missing=#{missNum}"

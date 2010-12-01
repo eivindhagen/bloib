@@ -1,4 +1,4 @@
-# saves a copy of a hos tconfiguratino file in a parallel directory structure, for safe keeping and future reference.
+# saves a copy of a host configuratino file in a parallel directory structure, for safe keeping and future reference.
 
 # echo all args: $*
 # echo arg 0: $0

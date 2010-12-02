@@ -1,0 +1,2 @@
+module Demo::HostScanHelper
+end

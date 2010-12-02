@@ -1,4 +1,12 @@
 RwbGithub::Application.routes.draw do
+  namespace :demo do
+    # Directs /admin/products/* to Admin::ProductsController
+    # (app/controllers/admin/products_controller.rb)
+    #get "host_scan/index"
+    resources :host_scan
+  end
+
+
   get "welcome/index"
 
   # The priority is based upon order of creation:

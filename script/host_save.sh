@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # saves a copy of a host configuration file in a parallel directory structure (cloneDir), for safe keeping and future reference.
 
 # echo all args: $*

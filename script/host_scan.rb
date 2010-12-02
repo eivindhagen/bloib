@@ -93,4 +93,6 @@ if __FILE__ == $0
   puts "Scanning #{cloneDir}"
   diffNum, missNum = host_scan(cloneDir, "/", option)
   puts "Summary: changed=#{diffNum} missing=#{missNum}"
+  
+  puts `ps aux | grep host_scan`
 end

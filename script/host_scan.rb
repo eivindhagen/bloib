@@ -63,6 +63,8 @@ if __FILE__ == $0
   	unless cloneDir[cloneDir.size-1] == '/'
   	  puts "<cloneDir> should have a trailing /"
   	  puts "You called me with <cloneDir> = '#{cloneDir}'"
+      puts "cloneDir.size = #{cloneDir.size}"
+      puts "cloneDir[cloneDir.size-1] = #{cloneDir[cloneDir.size-1]}"
   	  badArgs = true
   	end
   	

@@ -60,7 +60,11 @@ if __FILE__ == $0
   unless badArgs
   	cloneDir = ARGV[0]
   	
-  	unless cloneDir[cloneDir.size-1].ord == "/".ord
+    lastChar = cloneDir[cloneDir.size-1]
+    lastCharAscii = (lastChar.class == String) ? lastChar.ord : lastChar[0]
+    slashChar = "/"
+    slashCharAscii = (slashChar.class == String) ? slashChar.ord : slashChar[0]
+  	unless lastCharAscii == slashCharAscii
   	  puts "<cloneDir> should have a trailing /"
   	  puts "You called me with <cloneDir> = '#{cloneDir}'"
       puts "cloneDir.size = #{cloneDir.size}"

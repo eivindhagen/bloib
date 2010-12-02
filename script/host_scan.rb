@@ -27,7 +27,7 @@ def host_scan(cloneDir, rootDir, option)
           end
           
         else
-          #puts "identical: #{fileOnRealHost}"
+          puts "identical: #{fileOnRealHost}"
         end
       else
         missNum += 1

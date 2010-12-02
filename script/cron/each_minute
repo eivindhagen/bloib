@@ -3,6 +3,6 @@
 mkdir -p tmp/cron
 
 date > tmp/cron/date
+git pull > tmp/cron/git_pull
 
-ruby -v > tmp/cron/ruby_version
-ruby script/host_scan.rb hosts/Ubuntu-10.04/ --test > tmp/cron/host_scan
+bash ./script/cron/each_minute.1

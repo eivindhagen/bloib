@@ -61,14 +61,14 @@ if __FILE__ == $0
   	cloneDir = ARGV[0]
   	
     lastChar = cloneDir[cloneDir.size-1]
-    lastCharAscii = (lastChar.class == String) ? lastChar.ord : lastChar[0]
-    slashChar = "/"
-    slashCharAscii = (slashChar.class == String) ? slashChar.ord : slashChar[0]
-  	unless lastCharAscii == slashCharAscii
+    slashChar = "/"[0]	# [0] to match the above, so both are ascii code integers (Ruby 1.8.7) or strings (Ruby 1.9.2)
+  	unless lastChar == slashChar
   	  puts "<cloneDir> should have a trailing /"
   	  puts "You called me with <cloneDir> = '#{cloneDir}'"
       puts "cloneDir.size = #{cloneDir.size}"
       puts "cloneDir[cloneDir.size-1] = #{cloneDir[cloneDir.size-1]}"
+      puts "lastChar = #{lastChar}"
+      puts "slashChar = #{slashChar}"
   	  badArgs = true
   	end
   	

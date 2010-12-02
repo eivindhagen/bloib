@@ -1,2 +1,8 @@
-mkdir -p tmp
-date > tmp/cron_time
+#!/bin/bash
+
+mkdir -p tmp/cron
+
+date > tmp/cron/date
+
+ruby -v > tmp/cron/ruby_version
+ruby script/host_scan.rb hosts/Ubuntu-10.04/ --test > tmp/cron/host_scan

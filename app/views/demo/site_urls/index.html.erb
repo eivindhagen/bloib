@@ -1,0 +1,23 @@
+<h1>Listing demo_site_urls</h1>
+
+<table>
+  <tr>
+    <th>Url</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @demo_site_urls.each do |demo_site_url| %>
+  <tr>
+    <td><%= demo_site_url.url %></td>
+    <td><%= link_to 'Show', demo_site_url %></td>
+    <td><%= link_to 'Edit', edit_demo_site_url_path(demo_site_url) %></td>
+    <td><%= link_to 'Destroy', demo_site_url, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Site url', new_demo_site_url_path %>

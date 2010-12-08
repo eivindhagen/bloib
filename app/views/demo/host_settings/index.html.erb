@@ -1,0 +1,25 @@
+<h1>Listing demo_host_settings</h1>
+
+<table>
+  <tr>
+    <th>Key</th>
+    <th>Value</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @demo_host_settings.each do |demo_host_setting| %>
+  <tr>
+    <td><%= demo_host_setting.key %></td>
+    <td><%= demo_host_setting.value %></td>
+    <td><%= link_to 'Show', demo_host_setting %></td>
+    <td><%= link_to 'Edit', edit_demo_host_setting_path(demo_host_setting) %></td>
+    <td><%= link_to 'Destroy', demo_host_setting, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Host setting', new_demo_host_setting_path %>

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Key:</b>
+  <%= @demo_host_setting.key %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%= @demo_host_setting.value %>
+</p>
+
+
+<%= link_to 'Edit', edit_demo_host_setting_path(@demo_host_setting) %> |
+<%= link_to 'Back', demo_host_settings_path %>

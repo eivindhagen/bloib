@@ -1,6 +1,6 @@
 class Demo::HostScanController < ApplicationController
   def index
-    cron_rwb_root = HostSetting.find_by_key 'cron_rwb_root'
+    cron_rwb_root = Demo::HostSetting.find_by_key 'cron_rwb_root'
     if cron_rwb_root.nil? || cron_rwb_root.value.empty? 
       root = ::Rails.root.to_s
     else

@@ -100,5 +100,9 @@ if __FILE__ == $0
   diffNum, missNum = host_scan(cloneDir, "/", option)
   puts "Summary: changed=#{diffNum} missing=#{missNum}"
   
+  puts "[processes named host_scan]"
   puts `ps aux | grep host_scan`
+
+  puts "[disk free space]"
+  puts `df`
 end

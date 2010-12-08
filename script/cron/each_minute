@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# ensure we have a place to put the output from these scripts, in tmp/cron
 mkdir -p tmp/cron
 
 date > tmp/cron/date

@@ -96,12 +96,15 @@ if __FILE__ == $0
     exit 1
   end
   
-  puts "Scanning #{cloneDir}"
+  puts "[checking for modified file - comparing with #{cloneDir}]"
   diffNum, missNum = host_scan(cloneDir, "/", option)
   puts "Summary: changed=#{diffNum} missing=#{missNum}"
   
   puts "[processes named host_scan]"
   puts `ps aux | grep host_scan`
+
+  puts "[top - all processes]"
+  puts `top -b -n 1`
 
   puts "[disk free space]"
   puts `df`

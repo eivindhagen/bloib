@@ -1,12 +1,14 @@
 RwbGithub::Application.routes.draw do
-  namespace :demo do resources :host_settings end
 
   namespace :demo do
     # Directs /admin/products/* to Admin::ProductsController
     # (app/controllers/admin/products_controller.rb)
     #get "host_scan/index"
+    resources :host_settings
     resources :host_scan
     resources :site_urls
+
+    resources :emails
   end
 
 

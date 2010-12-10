@@ -1,0 +1,28 @@
+<h1>Demo::Emails#new</h1>
+
+<h2>Preview</h2>
+<%= render :partial => 'email' %>
+
+<h2>Form</h2>
+<%= form_tag '/demo/emails', :method => :post do %>
+	<p>
+		<%= label_tag 'email[from]', 'From' %><br />
+		<%= text_field_tag 'email[from]', @email[:from] %>
+	</p>
+	<p>
+		<%= label_tag 'email[to]', 'To' %><br />
+		<%= text_field_tag 'email[to]', @email[:to] %>
+	</p>
+	<p>
+		<%= label_tag 'email[subject]', 'Subject' %><br />
+		<%= text_field_tag 'email[subject]', @email[:subject] %>
+	</p>
+	<p>
+		<%= label_tag 'email[body]', 'Body' %><br />
+		<%= text_area_tag 'email[body]', @email[:body], :size => "80x5" %>
+	</p>
+	<p>
+		<%= label_tag :email, 'Action' %><br />
+		<%= submit_tag 'Send Email' %>
+	</p>
+<% end %>

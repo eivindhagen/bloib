@@ -3,20 +3,20 @@
 <% @photos.each do |photo| %>
   <div style="display:inline-block;width:220px;vertical-align:top;border:solid gray 1px;">
 	  <table>
-      <tr><td colspan=2><h2><%= link_to photo.title, photo %></h2></td></tr>
+      <tr><td colspan=2><h3><%= link_to photo.title, photo %></h3></td></tr>
+      <tr><td colspan=2><%= photo.body %></td></tr>
 	  	<tr>
 		  	<td>
 		  		<table>
-			      <tr><td>Album: <%= photo.gallery_id %></td></tr>
 			      <tr><td><%= link_to image_tag(photo.photo_url, :width => 100, :border => 1), photo %></td></tr>
+            <tr><td>Album: <%= photo.gallery_id %></td></tr>
+            <tr><td>Publish: <%= photo.publish %></td></tr>
 		  		</table>
 		  	</td>
 				<td>
 	        <table>
-			      <tr><td>Publish: <%= photo.publish %></td></tr>
-			      <tr><td><%= photo.body %></td></tr>
             <tr><td><%= link_to image_tag("http://api.thumbalizr.com/?api_key=ebddac5af4f9e9d1ff38cb98110250d2&url=#{photo.page_url}&width=100", :width => 100, :border => 1), photo %></td></tr>
-            <tr><td><%= link_to 'Show', photo %> <%= link_to 'Edit', edit_photo_path(photo) %> <%= link_to 'Destroy', photo, :confirm => 'Are you sure?', :method => :delete %></td></tr>
+            <tr><td><%= link_to 'Edit', edit_photo_path(photo) %> <%= link_to 'Destroy', photo, :confirm => 'Are you sure?', :method => :delete %></td></tr>
 	        </table>
 				</td>
       </tr>

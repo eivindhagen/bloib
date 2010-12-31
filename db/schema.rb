@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101208081545) do
+ActiveRecord::Schema.define(:version => 20101231102002) do
 
   create_table "demo_host_settings", :force => true do |t|
     t.string   "key"
@@ -21,6 +21,25 @@ ActiveRecord::Schema.define(:version => 20101208081545) do
 
   create_table "demo_site_urls", :force => true do |t|
     t.text     "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "galleries", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "photos", :force => true do |t|
+    t.integer  "gallery_id"
+    t.string   "title"
+    t.text     "body"
+    t.text     "photo_url"
+    t.text     "page_url"
+    t.boolean  "publish"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

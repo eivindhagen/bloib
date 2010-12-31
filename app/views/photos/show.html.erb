@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Gallery:</b>
+  <%= @photo.gallery_id %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @photo.title %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= @photo.body %>
+</p>
+
+<p>
+  <b>Photo url:</b>
+  <%= @photo.photo_url %>
+</p>
+<%= image_tag @photo.photo_url, :height => 152 %>
+
+<p>
+  <b>Page url:</b>
+  <%= @photo.page_url %>
+</p>
+<%= image_tag "http://images.websnapr.com/?size=S&key=jlj7Pe4I8scm&url=#{@photo.page_url}", :height => 152 %>
+
+<p>
+  <b>Publish:</b>
+  <%= @photo.publish %>
+</p>
+
+
+<%= link_to 'Edit', edit_photo_path(@photo) %> |
+<%= link_to 'Back', photos_path %>

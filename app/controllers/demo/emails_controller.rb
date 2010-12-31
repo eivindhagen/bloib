@@ -7,7 +7,7 @@ class Demo::EmailsController < ApplicationController
 
   def new
     random_string = ActiveSupport::SecureRandom.hex(16)
-    @email = {:from => 'sender@bloib.com', :to => 'receiver@bloib.com', :subject => Time.now, :body => random_string}
+    @email = {:from => 'Any Sender <demo@bloib.com>', :to => 'Some Receiver <receiver@bloib.com>', :subject => Time.now, :body => random_string}
   end
 
   def create

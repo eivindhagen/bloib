@@ -12,6 +12,7 @@ class Demo::EmailsController < ApplicationController
 
   def create
     @email = params[:email]
+    logger.error "@email = #{@email}"
     DemoMailer.demo_email(@email).deliver
   end
 

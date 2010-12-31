@@ -18,8 +18,8 @@
     <td><%= photo.gallery_id %></td>
     <td><%= photo.title %></td>
     <td><%= photo.body %></td>
-    <td><%= photo.photo_url %></td>
-    <td><%= photo.page_url %></td>
+    <td><%= image_tag photo.photo_url, :width => 200, :border => 1 %></td>
+    <td><%= image_tag "http://api.thumbalizr.com/?api_key=ebddac5af4f9e9d1ff38cb98110250d2&url=#{photo.page_url}&width=200", :width => 200, :border => 1 %></td>
     <td><%= photo.publish %></td>
     <td><%= link_to 'Show', photo %></td>
     <td><%= link_to 'Edit', edit_photo_path(photo) %></td>
@@ -27,6 +27,32 @@
   </tr>
 <% end %>
 </table>
+
+
+<% @photos.each do |photo| %>
+  <div style="display:inline-block;width:430px;vertical-align:top;border:solid black 2px;">
+	  <table>
+      <tr><td colspan=2><h2><%= link_to photo.title, photo %></h2></td></tr>
+	  	<tr>
+		  	<td>
+		  		<table>
+			      <tr><td>Album: <%= photo.gallery_id %></td></tr>
+			      <tr><td><%= link_to image_tag(photo.photo_url, :width => 200, :border => 1), photo %></td></tr>
+		  		</table>
+		  	</td>
+				<td>
+	        <table>
+			      <tr><td>Publish: <%= photo.publish %></td></tr>
+			      <tr><td><%= photo.body %></td></tr>
+            <tr><td><%= link_to image_tag("http://api.thumbalizr.com/?api_key=ebddac5af4f9e9d1ff38cb98110250d2&url=#{photo.page_url}&width=200", :width => 200, :border => 1), photo %></td></tr>
+            <tr><td><%= link_to 'Show', photo %> <%= link_to 'Edit', edit_photo_path(photo) %> <%= link_to 'Destroy', photo, :confirm => 'Are you sure?', :method => :delete %></td></tr>
+	        </table>
+				</td>
+      </tr>
+	  </table>
+	</div>
+<% end %>
+
 
 <br />
 

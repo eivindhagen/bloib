@@ -1,0 +1,18 @@
+<div style="display:inline-block;overflow:hidden;vertical-align:top;">
+  <h2><span style="horizontal-align:center"><%= link_to gallery.title, gallery %></span></h2>
+  <p>
+    <%= gallery.body %>
+  </p>
+  <% num = [gallery.photos.size, 10].min %>
+  <% if num > 0 %>
+    <table style="overflow:hidden">
+      <tr>
+        <% gallery.photos[0...num].each do |photo| %>
+          <td>
+            <%= link_to image_tag(photo.photo_url, :height => 100), photo %>
+          </td>
+        <% end %>
+      </tr>
+    </table>
+  <% end %>
+</div>

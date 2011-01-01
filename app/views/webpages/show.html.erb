@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Publisher:</b>
+  <%= @webpage.publisher.title %>
+</p>
+
+<br/>
+<%= link_to 'Edit', edit_webpage_path(@webpage) %> |
+<%= link_to 'Back', webpages_path %>
+
+<% num = @webpage.photos.size %>
+<% if num > 0 %>
+  <br/>
+  <p>There <%= num == 1 ? 'is' : 'are' %> <%= pluralize(@webpage.photos.size, 'published photo') %> on this page:</p>
+
+  <% @webpage.photos.each do |photo| %>
+    <%= link_to image_tag(photo.photo_url, :height => 200), photo %>
+  <% end %>
+<% end %>
+
+<h3>Visit the publisher's webpage:</h3>
+<p>
+  <%= link_to(@webpage.url, @webpage.url) %><br/>
+</p>
+<%= link_to image_tag("http://api.thumbalizr.com/?api_key=ebddac5af4f9e9d1ff38cb98110250d2&url=#{@webpage.url}&width=400", :width => 400, :border => 2), @webpage.url %>
+
+<%
+# link_to image_tag("http://images.websnapr.com/?size=S&key=jlj7Pe4I8scm&url=#{webpage.url}", :height => 152, :border => 2), webpage.url
+%>

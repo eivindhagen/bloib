@@ -1,27 +1,5 @@
-<h1>Listing galleries</h1>
-
-<table>
-  <tr>
-    <th>User</th>
-    <th>Title</th>
-    <th>Body</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @galleries.each do |gallery| %>
-  <tr>
-    <td><%= gallery.user_id %></td>
-    <td><%= gallery.title %></td>
-    <td><%= gallery.body %></td>
-    <td><%= link_to 'Show', gallery %></td>
-    <td><%= link_to 'Edit', edit_gallery_path(gallery) %></td>
-    <td><%= link_to 'Destroy', gallery, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+<h1>Listing galleries [<%= link_to 'Add New', new_gallery_path %>]</h1>
 
 <br />
 
-<%= link_to 'New Gallery', new_gallery_path %>
+<%= render @galleries %>

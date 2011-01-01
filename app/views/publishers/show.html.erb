@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1><span style="horizontal-align:center"><%= @publisher.title %></span></h1>
+
+<p>
+  <b>Url:</b>
+  <%= link_to @publisher.url, @publisher.url %>
+</p>
+
+<p>
+  <%= @publisher.body %>
+</p>
+
+<%= link_to 'Edit', edit_publisher_path(@publisher) %> |
+<%= link_to 'Back to Publishers', publisher_path %>
+
+<hr>
+
+<% num = @publisher.webpages.size %>
+<% if num > 0 %>
+  <h2>Webpages (<%= num %>)</h2>
+  <% @publisher.webpages.each do |webpage| %>
+    <div style="display:inline-block;">
+      <%= render webpage
+      %>
+    </div>
+  <% end %>
+<% end %>
+
+<%
+photos = []
+@publisher.webpages.map do |webpages|
+  begin
+    webpages.photos.each do |photo|
+      photos << photo
+    end
+  rescue
+    nil
+  end
+end
+photos.uniq!
+photos.reject!{|p| p.nil? }
+%>
+
+<% if photos.size > 0 %>
+  <br/>
+  <h2>All Photos (<%= photos.size %>)</h2>
+  <% photos.each do |photo| %>
+    <%= link_to image_tag(photo.photo_url, :height => 150), photo %>
+  <% end %>
+  <%= # render photos
+  %>
+<% end %>

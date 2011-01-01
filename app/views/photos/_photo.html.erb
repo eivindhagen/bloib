@@ -1,0 +1,12 @@
+<div style="display:inline-block;overflow:hidden;width:320px;height:240px;vertical-align:top;border:solid gray 1px;">
+    <span style="text-align:center;"><h2><%= link_to photo.title, photo %></h2></span>
+  	<p>
+		  <div style="display:inline-block;float:left;margin-left:1em;margin-right:1em;margin-bottom:1em;">
+		    <%= link_to image_tag(photo.photo_url, :width => 140, :border => 1), photo %>
+		  </div>
+		  <%= photo.body %>
+    </p>
+  </table>
+</div>
+
+

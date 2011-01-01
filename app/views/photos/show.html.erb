@@ -1,35 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Gallery:</b>
-  <%= @photo.gallery_id %>
-</p>
+<h1><%= @photo.title %></h1>
 
 <p>
-  <b>Title:</b>
-  <%= @photo.title %>
-</p>
-
-<p>
-  <b>Body:</b>
   <%= @photo.body %>
 </p>
 
 <p>
+  <b>Gallery:</b>
+  <%= link_to @photo.gallery.title, @photo.gallery %>
+</p>
+
+<p>
   <b>Photo url:</b>
-  <%= @photo.photo_url %>
+  <%= link_to(@photo.photo_url, @photo.photo_url) %>
 </p>
 <%= link_to image_tag(@photo.photo_url, :width => 400, :border => 2), @photo.photo_url %>
 
-<p>
-  <b>Page url:</b>
-  <%= @photo.page_url %>
-</p>
-<%= link_to image_tag("http://api.thumbalizr.com/?api_key=ebddac5af4f9e9d1ff38cb98110250d2&url=#{@photo.page_url}&width=400", :width => 400, :border => 2), @photo.page_url %>
+<% if (webpage = @photo.webpage) %>
+  <h2>This photo is published on the following webpage:</h2>
+  <p><%= link_to(webpage.url, webpage) %></p>
+  <%= link_to image_tag("http://api.thumbalizr.com/?api_key=ebddac5af4f9e9d1ff38cb98110250d2&url=#{webpage.url}&width=400", :width => 400, :border => 2), webpage %>
 
-<%
-# image_tag "http://images.websnapr.com/?size=S&key=jlj7Pe4I8scm&url=#{@photo.page_url}", :height => 152, :border => 2
-%>
+  <%
+  # link_to image_tag("http://images.websnapr.com/?size=S&key=jlj7Pe4I8scm&url=#{webpage.url}", :height => 152, :border => 2), webpage.url
+  %>
+
+<% end %>
 
 <p>
   <b>Publish:</b>

@@ -13,7 +13,11 @@
 
   <div class="field">
     <%= f.label :gallery_id %><br />
-    <%= f.text_field :gallery_id %>
+    <%= f.collection_select(:gallery_id, Gallery.all, :id, :title, :include_blank => true) %>
+  </div>
+  <div class="field">
+    <%= f.label :webpage_id %><br />
+    <%= f.collection_select(:webpage_id, Webpage.all, :id, :url, :include_blank => true) %>
   </div>
   <div class="field">
     <%= f.label :title %><br />
@@ -26,10 +30,6 @@
   <div class="field">
     <%= f.label :photo_url %><br />
     <%= f.text_area :photo_url, :size => "80x1" %>
-  </div>
-  <div class="field">
-    <%= f.label :page_url %><br />
-    <%= f.text_area :page_url, :size => "80x1" %>
   </div>
   <div class="field">
     <%= f.label :publish %><br />

@@ -1,31 +1,5 @@
-<h1>Listing photos</h1>
-
-<% @photos.each do |photo| %>
-  <div style="display:inline-block;overflow:hidden;width:320px;height:320px;vertical-align:top;border:solid gray 1px;">
-	  <table>
-      <tr><td colspan=2 style="text-align:center;"><h2><%= link_to photo.title, photo %></h2></td></tr>
-      <tr style="text-align:center;">
-      	<td>Album: <%= photo.gallery_id %></td>
-        <td><%= link_to 'Edit', edit_photo_path(photo) %> <%= link_to 'Destroy', photo, :confirm => 'Are you sure?', :method => :delete %></td>
-			</tr>
-	  	<tr style="vertical-align:top;">
-		  	<td>
-		  		<table>
-			      <tr><td><%= link_to image_tag(photo.photo_url, :width => 140, :border => 1), photo %></td></tr>
-		  		</table>
-		  	</td>
-				<td>
-          <table>
-            <tr><td><%= link_to image_tag("http://api.thumbalizr.com/?api_key=ebddac5af4f9e9d1ff38cb98110250d2&url=#{photo.page_url}&width=140", :width => 140, :border => 1), photo %></td></tr>
-	        </table>
-				</td>
-      </tr>
-      <tr><td colspan=2><%= photo.body %></td></tr>
-	  </table>
-	</div>
-<% end %>
-
+<h1>Listing photos [<%= link_to 'Add New', new_photo_path %>]</h1>
 
 <br />
 
-<%= link_to 'New Photo', new_photo_path %>
+<%= render @photos %>

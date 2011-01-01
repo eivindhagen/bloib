@@ -1,8 +1,10 @@
 RwbGithub::Application.routes.draw do
 
-  resources :photos
-
   resources :galleries
+
+  resources :publishers
+  resources :webpages
+  resources :photos
 
   namespace :demo do
     # Directs /admin/products/* to Admin::ProductsController

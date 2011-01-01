@@ -42,7 +42,7 @@ photos.uniq!
 photos.reject!{|p| p.nil? }
 %>
 
-<% if photos.size > 0 %>
+<% if false && photos.size > 0 %>
   <br/>
   <h2>All Photos (<%= photos.size %>)</h2>
   <% photos.each do |photo| %>

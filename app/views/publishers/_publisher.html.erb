@@ -1,9 +1,15 @@
-<div style="display:block;overflow:hidden;vertical-align:top;">
-  <h2><span style="horizontal-align:center"><%= link_to publisher.title, publisher %></span></h2>
+<div style="overflow:hidden;vertical-align:top;">
+  <h2>
+    <% image_style = "float:left;margin-right:1em;margin-bottom:1em;" %>
+    <%= link_to image_tag("http://api.thumbalizr.com/?api_key=ebddac5af4f9e9d1ff38cb98110250d2&url=#{publisher.url}&width=400", :height => 200, :style => image_style), publisher %>
+    <span style="horizontal-align:center">
+      <%= link_to publisher.title, publisher %>
+      [<%= link_to 'Add Webpage', new_webpage_path(:publisher_id => publisher.id) %>]
+      [<%= link_to 'Add Photo', new_photo_path(:publisher_id => publisher.id, :webpage_id => 'input_url') %>]
+
+    </span>
+  </h2>
   <p>
-    <div style="display:inline-block;float:left;margin-left:1em;margin-right:1em;margin-bottom:1em;">
-      <%= link_to image_tag("http://api.thumbalizr.com/?api_key=ebddac5af4f9e9d1ff38cb98110250d2&url=#{publisher.url}&width=400", :height => 200), publisher.url %>
-    </div>
     <%= publisher.body %>
   </p>
 

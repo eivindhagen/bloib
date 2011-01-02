@@ -1,25 +1,16 @@
 <p id="notice"><%= notice %></p>
 
+<h1><span style="horizontal-align:center">Webpage: <%= @webpage.title || '<i>Untitled</i>'.html_safe %></span></h1>
+
 <p>
   <b>Publisher:</b>
-  <%= @webpage.publisher.title %>
+  <% if @webpage.publisher %>
+    <%= link_to(@webpage.publisher.title || 'NULL', @webpage.publisher) %>
+  <% else %>
+    NULL
+  <% end %>
 </p>
 
-<br/>
-<%= link_to 'Edit', edit_webpage_path(@webpage) %> |
-<%= link_to 'Back', webpages_path %>
-
-<% num = @webpage.photos.size %>
-<% if num > 0 %>
-  <br/>
-  <p>There <%= num == 1 ? 'is' : 'are' %> <%= pluralize(@webpage.photos.size, 'published photo') %> on this page:</p>
-
-  <% @webpage.photos.each do |photo| %>
-    <%= link_to image_tag(photo.photo_url, :height => 200), photo %>
-  <% end %>
-<% end %>
-
-<h3>Visit the publisher's webpage:</h3>
 <p>
   <%= link_to(@webpage.url, @webpage.url) %><br/>
 </p>
@@ -28,3 +19,18 @@
 <%
 # link_to image_tag("http://images.websnapr.com/?size=S&key=jlj7Pe4I8scm&url=#{webpage.url}", :height => 152, :border => 2), webpage.url
 %>
+
+<br/>
+<%= link_to 'Edit', edit_webpage_path(@webpage) %> |
+<%= link_to 'Delete', @webpage, :confirm => 'Are you sure?', :method => :delete %> |
+<%= link_to 'Back to Webpages', webpages_path %>
+
+<h2>Photos (<%= @webpage.photos.size %>) [<%= link_to 'Add Photo', new_photo_path(:webpage_id => @webpage.id) %>]</h2>
+
+<% num = @webpage.photos.size %>
+<% if num > 0 %>
+  <% @webpage.photos.each do |photo| %>
+    <%= link_to image_tag(photo.photo_url, :height => 200), photo %>
+  <% end %>
+<% end %>
+

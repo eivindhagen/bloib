@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1><span style="horizontal-align:center"><%= @gallery.title %></span></h1>
+<h1><span style="horizontal-align:center">Gallery: <%= @gallery.title %></span></h1>
 
 <p>
   <%= @gallery.body %>
@@ -16,6 +16,7 @@
 
 <% num = @gallery.photos.size %>
 <% if num > 0 %>
+  <h2>Photos (<%= num %>)</h2>
   <% @gallery.photos.each do |photo| %>
     <div style="display:inline-block;">
       <%= link_to image_tag(photo.photo_url, :height => 150), photo %>

@@ -1,7 +1,9 @@
-<div style="display:block;overflow:hidden;vertical-align:top;">
-  <h3><span style="horizontal-align:center"><%= link_to webpage.url, webpage %></span></h3>
-
-  <%= link_to image_tag("http://api.thumbalizr.com/?api_key=ebddac5af4f9e9d1ff38cb98110250d2&url=#{webpage.url}&width=400", :height => 100), webpage.url %>
+<div style="overflow:hidden;vertical-align:top;">
+  <h3>
+    <% image_style = "float:left;margin-right:1em;margin-bottom:1em;" %>
+    <%= link_to image_tag("http://api.thumbalizr.com/?api_key=ebddac5af4f9e9d1ff38cb98110250d2&url=#{webpage.url}&width=400", :height => 150, :style => image_style), webpage %>
+    <span style="horizontal-align:center"><%= link_to webpage.url, webpage.url %></span>
+  </h3>
 
   <% num = webpage.photos.size %>
   <% if num > 0 %>

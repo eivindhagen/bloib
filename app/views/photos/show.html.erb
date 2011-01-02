@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @photo.title %></h1>
+<h1>Photo: <%= @photo.title_safe %></h1>
 
 <p>
   <%= @photo.body %>
@@ -8,31 +8,28 @@
 
 <p>
   <b>Gallery:</b>
-  <%= link_to @photo.gallery.title, @photo.gallery %>
+  <%= @photo.gallery ? link_to(@photo.gallery.title, @photo.gallery) : '<i>Unknown</i>'.html_safe %>
 </p>
 
+<%= link_to image_tag(@photo.photo_url, :width => 400, :border => 2), @photo.photo_url %>
 <p>
   <b>Photo url:</b>
   <%= link_to(@photo.photo_url, @photo.photo_url) %>
 </p>
-<%= link_to image_tag(@photo.photo_url, :width => 400, :border => 2), @photo.photo_url %>
+
+<br/>
+<%= link_to 'Edit', edit_photo_path(@photo) %> |
+<%= link_to 'Delete', @photo, :confirm => 'Are you sure?', :method => :delete %> |
+<%= link_to 'Back', photos_path %>
 
 <% if (webpage = @photo.webpage) %>
   <h2>This photo is published on the following webpage:</h2>
-  <p><%= link_to(webpage.url, webpage) %></p>
+  <h3>Publisher: <%= link_to @photo.webpage.publisher.title, @photo.webpage.publisher %></h3>
   <%= link_to image_tag("http://api.thumbalizr.com/?api_key=ebddac5af4f9e9d1ff38cb98110250d2&url=#{webpage.url}&width=400", :width => 400, :border => 2), webpage %>
+  <p><%= link_to(webpage.url, webpage) %></p>
 
   <%
   # link_to image_tag("http://images.websnapr.com/?size=S&key=jlj7Pe4I8scm&url=#{webpage.url}", :height => 152, :border => 2), webpage.url
   %>
 
 <% end %>
-
-<p>
-  <b>Publish:</b>
-  <%= @photo.publish %>
-</p>
-
-
-<%= link_to 'Edit', edit_photo_path(@photo) %> |
-<%= link_to 'Back', photos_path %>

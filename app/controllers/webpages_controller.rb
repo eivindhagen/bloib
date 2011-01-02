@@ -1,3 +1,6 @@
+require 'nokogiri'
+require 'open-uri'
+
 class WebpagesController < ApplicationController
   # GET /webpages
   # GET /webpages.xml
@@ -15,6 +18,8 @@ class WebpagesController < ApplicationController
   def show
     @webpage = Webpage.find(params[:id])
 
+    check_title
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @webpage }
@@ -25,6 +30,13 @@ class WebpagesController < ApplicationController
   # GET /webpages/new.xml
   def new
     @webpage = Webpage.new
+
+    @skip_fields = {}
+    if (publisher_id = params[:publisher_id])
+      publisher = Publisher.find(publisher_id)
+      @webpage.publisher = publisher
+      @skip_fields[:publisher_id] = true
+    end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,6 +54,8 @@ class WebpagesController < ApplicationController
   def create
     @webpage = Webpage.new(params[:webpage])
 
+    check_title
+
     respond_to do |format|
       if @webpage.save
         format.html { redirect_to(@webpage, :notice => 'Webpage was successfully created.') }
@@ -57,6 +71,8 @@ class WebpagesController < ApplicationController
   # PUT /webpages/1.xml
   def update
     @webpage = Webpage.find(params[:id])
+
+    check_title
 
     respond_to do |format|
       if @webpage.update_attributes(params[:webpage])
@@ -80,4 +96,22 @@ class WebpagesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  private
+  
+  def check_title
+    return if @webpage.title && @webpage.title.length > 0
+    
+    doc = Nokogiri::HTML(open(@webpage.url))
+    title_tag = doc.at_css('title')
+    if title_tag
+      if title_tag.text.length > 0
+        @webpage.title = title_tag.text
+      else
+        @webpage.title = @webpage.url.split('/').last
+      end
+      @webpage.save!
+    end
+  end
+  
 end

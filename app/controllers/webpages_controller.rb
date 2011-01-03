@@ -18,7 +18,7 @@ class WebpagesController < ApplicationController
   def show
     @webpage = Webpage.find(params[:id])
 
-    check_title
+    @webpage.title_check_and_save
     
     respond_to do |format|
       format.html # show.html.erb
@@ -54,7 +54,7 @@ class WebpagesController < ApplicationController
   def create
     @webpage = Webpage.new(params[:webpage])
 
-    check_title
+#    @webpage.title_check
 
     respond_to do |format|
       if @webpage.save
@@ -72,7 +72,7 @@ class WebpagesController < ApplicationController
   def update
     @webpage = Webpage.find(params[:id])
 
-    check_title
+#    @webpage.title_check
 
     respond_to do |format|
       if @webpage.update_attributes(params[:webpage])
@@ -97,21 +97,4 @@ class WebpagesController < ApplicationController
     end
   end
 
-  private
-  
-  def check_title
-    return if @webpage.title && @webpage.title.length > 0
-    
-    doc = Nokogiri::HTML(open(@webpage.url))
-    title_tag = doc.at_css('title')
-    if title_tag
-      if title_tag.text.length > 0
-        @webpage.title = title_tag.text
-      else
-        @webpage.title = @webpage.url.split('/').last
-      end
-      @webpage.save!
-    end
-  end
-  
 end

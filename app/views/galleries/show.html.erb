@@ -19,7 +19,7 @@
   <h2>Photos (<%= num %>)</h2>
   <% @gallery.photos.each do |photo| %>
     <div style="display:inline-block;">
-      <%= link_to image_tag(photo.photo_url, :height => 150), photo %>
+      <%= link_to image_tag(photo.cached_photo_url(:height => 150), :height => 150), photo %>
     </div>
   <% end %>
 <% end %>

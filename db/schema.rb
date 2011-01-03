@@ -10,7 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110102080819) do
+ActiveRecord::Schema.define(:version => 20110103093733) do
+
+  create_table "cached_photos", :force => true do |t|
+    t.integer  "photo_id"
+    t.integer  "width"
+    t.integer  "height"
+    t.string   "filename"
+    t.string   "md5"
+    t.string   "sha1"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "demo_host_settings", :force => true do |t|
     t.string   "key"
@@ -41,6 +52,10 @@ ActiveRecord::Schema.define(:version => 20110102080819) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "webpage_id"
+    t.integer  "width"
+    t.integer  "height"
+    t.string   "md5"
+    t.string   "sha1"
   end
 
   create_table "publishers", :force => true do |t|

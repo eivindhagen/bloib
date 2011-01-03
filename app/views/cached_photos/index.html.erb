@@ -1,0 +1,35 @@
+<h1>Listing cached_photos</h1>
+
+<table>
+  <tr>
+    <th>Image</th>
+    <th>Photo</th>
+    <th>Width</th>
+    <th>Height</th>
+    <th>Filename</th>
+    <th>Md5</th>
+    <th>Sha1</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cached_photos.each do |cached_photo| %>
+  <tr>
+    <td><%= link_to image_tag(cached_photo.href), cached_photo.href %></td>
+    <td><%= cached_photo.photo_id %></td>
+    <td><%= cached_photo.width %></td>
+    <td><%= cached_photo.height %></td>
+    <td><%= link_to cached_photo.filename, cached_photo %></td>
+    <td><%= cached_photo.md5 %></td>
+    <td><%= cached_photo.sha1 %></td>
+    <td><%= link_to 'Show', cached_photo %></td>
+    <td><%= link_to 'Edit', edit_cached_photo_path(cached_photo) %></td>
+    <td><%= link_to 'Destroy', cached_photo, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Cached photo', new_cached_photo_path %>

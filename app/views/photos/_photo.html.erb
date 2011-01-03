@@ -2,7 +2,7 @@
     <span style="text-align:left;"><h2><%= link_to photo.title_safe, photo %></h2></span>
   	<p>
 		  <div style="display:inline-block;float:left;margin-left:1em;margin-right:1em;margin-bottom:1em;">
-		    <%= link_to image_tag(photo.photo_url, :width => 140, :border => 1), photo %>
+		    <%= link_to image_tag(photo.cached_photo_url(:width => 150), :width => 150, :border => 1), photo %>
 		  </div>
 		  <%= photo.body %>
     </p>

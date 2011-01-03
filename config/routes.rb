@@ -1,5 +1,7 @@
 RwbGithub::Application.routes.draw do
 
+  resources :cached_photos
+
   resources :galleries
 
   resources :publishers

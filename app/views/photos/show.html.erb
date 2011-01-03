@@ -11,7 +11,10 @@
   <%= @photo.gallery ? link_to(@photo.gallery.title, @photo.gallery) : '<i>Unknown</i>'.html_safe %>
 </p>
 
-<%= link_to image_tag(@photo.photo_url, :width => 400, :border => 2), @photo.photo_url %>
+<%= link_to image_tag(@photo.cached_photo_url(:width => 400), :width => 400, :border => 2), @photo.photo_url %>
+<br/>
+Image size: <%= @photo.width || '?' %>x<%= @photo.height || '?' %> pixels
+
 <p>
   <b>Photo url:</b>
   <%= link_to(@photo.photo_url, @photo.photo_url) %>

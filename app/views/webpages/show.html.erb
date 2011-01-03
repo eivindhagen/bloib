@@ -30,7 +30,7 @@
 <% num = @webpage.photos.size %>
 <% if num > 0 %>
   <% @webpage.photos.each do |photo| %>
-    <%= link_to image_tag(photo.photo_url, :height => 200), photo %>
+    <%= link_to image_tag(photo.cached_photo_url(:height => 200), :height => 200), photo %>
   <% end %>
 <% end %>
 

@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  photo_id: 1
+  width: 1
+  height: 1
+  filename: MyString
+  md5: MyString
+  sha1: MyString
+
+two:
+  photo_id: 1
+  width: 1
+  height: 1
+  filename: MyString
+  md5: MyString
+  sha1: MyString

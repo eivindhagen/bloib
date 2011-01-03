@@ -15,6 +15,10 @@ class PhotosController < ApplicationController
   def show
     @photo = Photo.find(params[:id])
 
+    # if @photo.width.nil? or @photo.height.nil?
+    #   @photo.create_metadata_from_url
+    # end
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @photo }

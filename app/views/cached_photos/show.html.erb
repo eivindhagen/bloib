@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<%= image_tag @cached_photo.href %>
+
+<p>
+  <b>Photo:</b>
+  <%= @cached_photo.photo_id %>
+</p>
+
+<p>
+  <b>Width:</b>
+  <%= @cached_photo.width %>
+</p>
+
+<p>
+  <b>Height:</b>
+  <%= @cached_photo.height %>
+</p>
+
+<p>
+  <b>Filename:</b>
+  <%= @cached_photo.filename %>
+</p>
+
+<p>
+  <b>Md5:</b>
+  <%= @cached_photo.md5 %>
+</p>
+
+<p>
+  <b>Sha1:</b>
+  <%= @cached_photo.sha1 %>
+</p>
+
+
+<%= link_to 'Edit', edit_cached_photo_path(@cached_photo) %> |
+<%= link_to 'Back', cached_photos_path %>

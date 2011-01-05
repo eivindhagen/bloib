@@ -21,7 +21,7 @@ gem 'mysql2'
 # Bundle the extra gems:
 # gem 'bj'
 gem 'nokogiri'
-gem 'RMagick'
+gem 'rmagick'
 # gem 'aws-s3', :require => 'aws/s3'
 
 # Bundle gems for the local environment. Make sure to

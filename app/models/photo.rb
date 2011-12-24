@@ -1,7 +1,7 @@
 require 'net/http'
 require 'digest/md5'
 require 'digest/sha1'
-require 'rmagick'
+require 'RMagick'
 
 class Photo < ActiveRecord::Base
   belongs_to :webpage
